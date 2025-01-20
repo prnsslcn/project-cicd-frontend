@@ -87,8 +87,8 @@ jobs:
           script_stop: true
           script: |
             sudo rm -rf /var/www/html
-            mkdir /var/www/html
-            mv /home/ubuntu/client/build/* /var/www/html
+            sudo mkdir /var/www/html
+            sudo mv /home/ubuntu/client/build/* /var/www/html
             cd /var/www/html
             sudo fuser -k -n tcp 8080 || true
             sudo systemctl restart nginx
