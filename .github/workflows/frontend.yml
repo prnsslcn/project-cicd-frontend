@@ -59,7 +59,7 @@ jobs:
 
 
       # 뒷정리 (업로드 결과 -> nginx의 root로 이동(설정), 디렉토리 정리)
-      - name: SSH로 EC2에 정리 후, 접속 및 서버가동
+      - name: SSH로 EC2에 정리 후, 접속 및 웹서버가동
         uses: appleboy/ssh-action@v1.2.0
         # script_stop : true -> 오류나면 중단
         # 처리할 반복적 작업
@@ -87,9 +87,7 @@ jobs:
           script_stop: true
           script: |
             sudo rm -rf /var/www/html
-            sudo mkdir /var/www/html
             sudo mv /home/ubuntu/client/build/* /var/www/html
-            cd /var/www/html
             sudo fuser -k -n tcp 8080 || true
             sudo systemctl restart nginx
-            rm -rf /home/ubuntu/client/build/
+            sudo rm -rf /home/ubuntu/client/build/
