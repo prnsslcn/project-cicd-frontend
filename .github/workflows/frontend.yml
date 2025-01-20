@@ -59,6 +59,7 @@ jobs:
 
 
       # 뒷정리 (업로드 결과 -> nginx의 root로 이동(설정), 디렉토리 정리)
+      # /var/www/html/ 디렉토리 임의 생성
       - name: SSH로 EC2에 정리 후, 접속 및 웹서버가동
         uses: appleboy/ssh-action@v1.2.0
         with:
